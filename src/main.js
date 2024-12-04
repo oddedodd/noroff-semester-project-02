@@ -1,3 +1,6 @@
 import './style.css'
 
-console.log('Hello World!')
+import router from "./js/router";
+
+await router(window.location.pathname);
+
