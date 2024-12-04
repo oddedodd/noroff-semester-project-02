@@ -1,1 +1,1 @@
-# noroff-semester-project-02
+# NOROFF Semester Project 02
