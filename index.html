@@ -7,7 +7,42 @@
     <title>FlipBid - Find your next treasure here!</title>
   </head>
   <body class="bg-background-primary">
-    
+    <header class="bg-white flex place-content-center h-24">
+      <nav class="container flex justify-between items-center px-4">
+        <div>
+          <img src="flipbid-logo01.svg" class="w-44" alt="">
+        </div>
+        <div class="flex items-center">
+          <!-- Desktop menu -->
+          <ul class="hidden md:flex items-center gap-16">
+            <li><a href="/home/">Home</a></li>
+            <li><a href="/listings/">Listings</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><button class="bg-blue-950 hover:bg-red-700 text-white rounded px-5 py-2">Sign in</button></li>
+          </ul>
+
+          <!-- Mobile sign in and menu -->
+          <button class="md:hidden bg-blue-950 hover:bg-red-700 text-white rounded px-5 py-2 mr-4">Sign in</button>
+          <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900">
+            <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="close-icon" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden fixed top-24 left-0 right-0 bg-white border-t border-gray-200">
+        <ul class="flex flex-col items-center py-4">
+          <li class="py-2"><a href="/home/">Home</a></li>
+          <li class="py-2"><a href="/listings/">Listings</a></li>
+          <li class="py-2"><a href="/about/">About</a></li>
+        </ul>
+      </div>
+    </header>
     <section class="bg-gray-800 text-white py-20">
       <div class="container mx-auto px-6 text-center">
         <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to FlipBid</h1>
