@@ -18,7 +18,10 @@ function createHeroSection() {
     container.appendChild(button);
     heroSection.appendChild(container);
 
-    document.body.appendChild(heroSection);
+    const app = document.getElementById('app');
+    app.innerHTML = ''; // Clear any existing
+        app.appendChild(heroSection);
+
 }
 
 createHeroSection();

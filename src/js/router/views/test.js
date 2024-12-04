@@ -24,17 +24,12 @@ function renderTestView() {
     section.appendChild(backLink);
     main.appendChild(section);
 
-    const footer = document.createElement('footer');
-    footer.className = 'bg-gray-800 text-white p-4 text-center';
-    const footerText = document.createElement('p');
-    footerText.textContent = 'Footer';
-    footer.appendChild(footerText);
-
     container.appendChild(header);
     container.appendChild(main);
-    container.appendChild(footer);
 
-    document.body.appendChild(container);
+    const app = document.getElementById('app');
+    app.innerHTML = ''; // Clear any existing content
+    app.appendChild(container);
 }
 
 renderTestView();
