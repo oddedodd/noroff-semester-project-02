@@ -1,3 +1,19 @@
 import './style.css'
 
-console.log('Hello World!')
+import router from "./js/router";
+
+await router(window.location.pathname);
+
+/*
+* Mobile menu
+*/
+const mobileMenuButton = document.querySelector('#mobile-menu-button');
+const mobileMenu = document.querySelector('#mobile-menu');
+const menuIcon = document.querySelector('#menu-icon');
+const closeIcon = document.querySelector('#close-icon');
+
+  mobileMenuButton.addEventListener('click', function() {
+    mobileMenu.classList.toggle('hidden');
+    menuIcon.classList.toggle('hidden');
+    closeIcon.classList.toggle('hidden');
+});
