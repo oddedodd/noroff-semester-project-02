@@ -1,6 +1,5 @@
 import { createFeaturedSection } from './components/featured.js';
 
-
 function createHeroSection() {
   const heroSection = document.createElement('section');
   heroSection.className = 'container my-10 mx-auto';
