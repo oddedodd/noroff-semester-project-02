@@ -1,8 +1,8 @@
 function createHeroSection() {
-    const heroSection = document.createElement('section');
-    heroSection.className = 'container my-10 mx-auto';
+  const heroSection = document.createElement('section');
+  heroSection.className = 'container my-10 mx-auto';
 
-    heroSection.innerHTML = `
+  heroSection.innerHTML = `
         <div class="flex flex-col-reverse md:flex-row w-full">
             <div class="w-full md:w-1/2 p-8">
                 <img src="splash02.svg" alt="vector drawing of a mobile phone viewing a listing on an online auction site">
@@ -22,23 +22,23 @@ function createHeroSection() {
         </div>
     `;
 
-    // Add event listeners to buttons
-    const joinButton = heroSection.querySelector('#joinButton');
-    const exploreButton = heroSection.querySelector('#exploreButton');
+  // Add event listeners to buttons
+  const joinButton = heroSection.querySelector('#joinButton');
+  const exploreButton = heroSection.querySelector('#exploreButton');
 
-    joinButton.addEventListener('click', () => {
-        // Add your join navigation logic here
-        console.log('Join button clicked');
-    });
+  joinButton.addEventListener('click', () => {
+    // Add your join navigation logic here
+    console.log('Join button clicked');
+  });
 
-    exploreButton.addEventListener('click', () => {
-        // Add your explore navigation logic here
-        console.log('Explore button clicked');
-    });
+  exploreButton.addEventListener('click', () => {
+    // Add your explore navigation logic here
+    console.log('Explore button clicked');
+  });
 
-    // Clear and update the app container
-    const hero = document.getElementById('hero');
-    hero.innerHTML = '';
-    hero.appendChild(heroSection);
+  // Clear and update the app container
+  const hero = document.getElementById('hero');
+  hero.innerHTML = '';
+  hero.appendChild(heroSection);
 }
 createHeroSection();
