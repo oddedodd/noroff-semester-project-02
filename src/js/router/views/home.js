@@ -16,8 +16,8 @@ function createHeroSection() {
                     <p class="text-lg font-thin mt-4 max-w-[600px] mx-auto md:mx-0">Discover amazing auctions and unbeatable deals on products you love. Whether you're here to score a rare find or list your treasures for bidding, FlipBid makes it fast, secure, and exciting.</p>
                     <p class="text-xl font-semibold mt-4">Start flipping and bidding today!</p>
                     <div class="flex gap-4 mt-4 justify-center md:justify-start">
-                        <button id="joinButton" class="bg-blue-950 hover:bg-red-700 text-white font-semibold uppercase rounded px-5 py-2 mt-4">Join now</button>
-                        <button id="exploreButton" class="bg-red-950 hover:bg-red-700 text-white font-semibold uppercase rounded px-5 py-2 mt-4">Explore listings</button>
+                        <button id="joinButton" class="bg-ecru hover:bg-dark-purple text-white font-semibold uppercase rounded px-5 py-2 mt-4">Join now</button>
+                        <button id="exploreButton" class="bg-scarlet hover:bg-dark-purple text-white font-semibold uppercase rounded px-5 py-2 mt-4">Explore listings</button>
                     </div>
                 </div>
             </div>
