@@ -11,12 +11,12 @@
     <header class="bg-white flex place-content-center h-24">
       <nav class="container flex justify-between items-center px-4">
         <div>
-          <img src="flipbid-logo01.svg" class="w-44" alt="">
+          <a href="/"><img src="/flipbid-logo01.svg" class="w-44" alt=""></a>
         </div>
         <div class="flex items-center">
           <!-- Desktop menu -->
           <ul class="hidden md:flex items-center gap-16">
-            <li><a href="/home/">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/listings/">Listings</a></li>
             <li><a href="/about/">About</a></li>
             <li><a href="/auth/login/" class="bg-blue-950 hover:bg-red-700 text-white rounded px-5 py-2">Sign in</a></li>
@@ -38,25 +38,45 @@
       <!-- Mobile menu -->
       <div id="mobile-menu" class="hidden md:hidden fixed top-24 left-0 right-0 bg-white border-t border-gray-200">
         <ul class="flex flex-col items-center py-4">
-          <li class="py-2"><a href="/home/">Home</a></li>
+          <li class="py-2"><a href="/">Home</a></li>
           <li class="py-2"><a href="/listings/">Listings</a></li>
           <li class="py-2"><a href="/about/">About</a></li>
         </ul>
       </div>
     </header>
-    </section>
     <main>
-      <section id="hero"></section>
-      <section id="featured" class="container mx-auto px-6 py-3 bg-background-secondary"></section>
-  </main>
-    <!-- <footer class="bg-white">
-      <div class="container mx-auto px-6 py-3">
-        <div class="flex justify-between items-center">
-          <p class="text-xl text-white">FlipBid</p>
-          <p class="py-2 text-white">All rights reserved</p>
+      <section class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
+          <h1 class="text-3xl font-bold text-center mb-8">Sign In</h1>
+          <form id="login-form" class="space-y-6" action="/auth/login/" method="post">
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+              <input type="email" id="email" name="email" required pattern="^[\w\-.]+@stud\.noroff\.no$"
+                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                placeholder="example@stud.noroff.no"
+                title="Please enter a valid @stud.noroff.no email address">
+              <p class="mt-1 text-sm text-gray-500">Must be a valid @stud.noroff.no email address</p>
+            </div>
+
+            <div>
+              <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+              <input type="password" id="password" name="password" required
+                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+            </div>
+
+            <div>
+              <button type="submit" 
+                class="w-full bg-blue-950 hover:bg-red-700 text-white font-semibold rounded px-5 py-2 transition duration-200">
+                Sign In
+              </button>
+            </div>
+          </form>
+
+          <p class="mt-6 text-center text-sm text-gray-600">
+            Don't have an account? 
+            <a href="/auth/register/" class="font-medium text-blue-950 hover:text-red-700">Create Account</a>
+          </p>
         </div>
-      </div>
-    </footer> -->
-    
-  </body>
-</html>
+      </section>
+    </main>
+    </section>
