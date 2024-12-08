@@ -1,28 +1,24 @@
-import { API_AUTH_LOGIN } from '../constants';
+import { API_AUTH_LOGIN } from '../constants.js';
 
-export async function login({ email, password }) {
-  try {
-    const response = await fetch(API_AUTH_LOGIN, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-    });
+export async function login(email, password) {
+  const response = await fetch(API_AUTH_LOGIN, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error('Login error details:', errorData);
-      throw new Error(`Login failed: ${errorData.message || 'Unknown error'}`);
-    } else {
-      const { data } = await response.json();
-      localStorage.setItem('token', data.accessToken);
-      localStorage.setItem('username', data.name);
+  const json = await response.json();
 
-      window.location.href = '/profile/';
-    }
-  } catch (error) {
-    console.error('Error logging in user:', error.message);
-    throw error; // Re-throw to allow handling by the calling code
+  if (!response.ok) {
+    throw new Error(json.errors?.[0]?.message || 'Error logging in user');
+  } else {
+    const { accessToken, name } = json.data;
+    localStorage.setItem('token', accessToken);
+    localStorage.setItem('username', name);
+    
+    console.log('User logged in successfully!');
+    window.location.href = '/profile/';
   }
 }
