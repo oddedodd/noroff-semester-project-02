@@ -1,6 +1,7 @@
 import './style.css';
 
 import router from './js/router';
+import { updateMenuState } from './js/utilities/menuState.js';
 
 await router(window.location.pathname);
 
@@ -20,4 +21,5 @@ mobileMenuButton.addEventListener('click', function () {
 
 document.addEventListener('DOMContentLoaded', () => {
     updateAuthButtons();
+    updateMenuState();
 });

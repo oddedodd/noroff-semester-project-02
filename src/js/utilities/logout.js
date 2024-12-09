@@ -2,6 +2,7 @@ import { Logout } from "../api/auth/logout";
 
 export function setLogoutListener(event) {
   event.preventDefault();
-  alert("You will be logged out");
-  onLogout();
+  if (confirm("Are you sure you want to log out?")) {
+    Logout();
+  }
 }

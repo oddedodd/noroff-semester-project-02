@@ -12,10 +12,11 @@ async function getProfile() {
   });
 
   const { data } = await response.json();
+  console.log(data);
 
   // Update profile information
-  document.querySelector('h1').textContent = data.name;
-  document.querySelector('.text-gray-600').textContent = data.email;
+  document.querySelector('#profile-name').textContent = data.name;
+  document.querySelector('#profile-email').textContent = data.email;
 
   // Update avatar image and image alt text
   if (data.avatar && data.avatar.url) {
