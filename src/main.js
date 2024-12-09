@@ -17,3 +17,7 @@ mobileMenuButton.addEventListener('click', function () {
   menuIcon.classList.toggle('hidden');
   closeIcon.classList.toggle('hidden');
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateAuthButtons();
+});

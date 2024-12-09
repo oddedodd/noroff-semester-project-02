@@ -22,7 +22,7 @@ async function getProfile() {
     document.querySelector('.rounded-full').src = data.avatar.url;
     document.querySelector('.rounded-full').alt = data.avatar.alt || `${data.name}'s avatar`;
   }
-
+  
   // Update listings
   const listingsContainer = document.querySelector('.grid');
   listingsContainer.innerHTML = ''; // Clear existing listings

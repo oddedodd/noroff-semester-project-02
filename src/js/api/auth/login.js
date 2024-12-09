@@ -12,7 +12,8 @@ export async function login(email, password) {
   const json = await response.json();
 
   if (!response.ok) {
-    throw new Error(json.errors?.[0]?.message || 'Error logging in user');
+    const errorMessage = json.errors?.[0]?.message || 'Error logging in user';
+    throw new Error(errorMessage);
   } else {
     const { accessToken, name } = json.data;
     localStorage.setItem('token', accessToken);
