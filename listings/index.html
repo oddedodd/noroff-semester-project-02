@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/flipbid-favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlipBid - Find your next treasure here!</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body class="bg-background-primary">
+    <header class="bg-white flex place-content-center h-24">
+      <nav class="container flex justify-between items-center px-4">
+        <div>
+          <a href="/"><img src="/flipbid-logo01.svg" class="w-44" alt=""></a>
+        </div>
+        <div class="flex items-center">
+          <!-- Desktop menu -->
+          <ul class="hidden md:flex items-center gap-16">
+            <li><a href="/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Home</a></li>
+            <li><a href="/listings/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Listings</a></li>
+            <li><a href="/about/" class="uppercase font-medium text-dark-purple hover:text-scarlet">About</a></li>
+            <li class="profile-link hidden"><a href="/profile/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Profile</a></li>
+            <li class="auth-action">
+              <a href="/auth/login/" class="bg-charcoal hover:bg-ecru text-white uppercase font-semibold rounded px-5 py-2 signin-btn">Sign in</a>
+              <button class="hidden logout-btn bg-ecru hover:bg-scarlet text-white uppercase font-semibold rounded px-5 py-2">Log out</button>
+            </li>
+          </ul>
+
+          <!-- Mobile sign in and menu -->
+          <div class="md:hidden auth-action">
+            <a href="/auth/login/" class="signin-btn bg-charcoal hover:bg-ecru text-white uppercase font-semibold rounded px-5 py-2 mr-4">Sign in</a>
+            <button class="hidden logout-btn bg-ecru hover:bg-scarlet text-white uppercase font-semibold rounded px-5 py-2 mr-4">Log out</button>
+          </div>
+          <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900">
+            <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="close-icon" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden fixed top-24 left-0 right-0 bg-white border-t border-gray-200">
+        <ul class="flex flex-col items-center py-4">
+          <li class="py-2"><a href="/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Home</a></li>
+          <li class="py-2"><a href="/listings/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Listings</a></li>
+          <li class="py-2"><a href="/about/" class="uppercase font-medium text-dark-purple hover:text-scarlet">About</a></li>
+          <li class="py-2 profile-link hidden"><a href="/profile/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Profile</a></li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <section class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-8 text-dark-purple">All Listings</h1>
+        
+        <!-- Grid of listings -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <!-- Listing Card 1 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="https://placehold.co/320x200" alt="Vintage Camera" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="text-xl font-semibold mb-2">Vintage Camera</h3>
+              <p class="text-gray-600">Classic 1960s camera in excellent condition</p>
+              <div class="mt-4">
+                <p class="text-blue-600">Current bids: 5</p>
+                <p class="font-semibold">Ends: Dec 31, 2023</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Listing Card 2 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="https://placehold.co/320x200" alt="Antique Watch" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="text-xl font-semibold mb-2">Antique Watch</h3>
+              <p class="text-gray-600">Rare collector's timepiece from 1920s</p>
+              <div class="mt-4">
+                <p class="text-blue-600">Current bids: 3</p>
+                <p class="font-semibold">Ends: Dec 30, 2023</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Listing Card 3 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="https://placehold.co/320x200" alt="Vintage Record Player" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="text-xl font-semibold mb-2">Vintage Record Player</h3>
+              <p class="text-gray-600">Fully restored turntable with original parts</p>
+              <div class="mt-4">
+                <p class="text-blue-600">Current bids: 7</p>
+                <p class="font-semibold">Ends: Dec 29, 2023</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Listing Card 4 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="https://placehold.co/320x200" alt="Classic Guitar" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="text-xl font-semibold mb-2">Classic Guitar</h3>
+              <p class="text-gray-600">1970s acoustic guitar with original case</p>
+              <div class="mt-4">
+                <p class="text-blue-600">Current bids: 4</p>
+                <p class="font-semibold">Ends: Dec 28, 2023</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
