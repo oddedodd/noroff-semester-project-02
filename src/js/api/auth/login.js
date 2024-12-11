@@ -18,7 +18,7 @@ export async function login(email, password) {
     const { accessToken, name } = json.data;
     localStorage.setItem('token', accessToken);
     localStorage.setItem('username', name);
-    
+
     console.log('User logged in successfully!');
     window.location.href = '/profile/';
   }

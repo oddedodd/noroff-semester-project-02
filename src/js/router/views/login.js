@@ -30,7 +30,7 @@ document.addEventListener('submit', async (event) => {
   const formData = new FormData(event.target);
   const data = Object.fromEntries(formData);
 
-  login(data.email, data.password).catch(error => {
+  login(data.email, data.password).catch((error) => {
     showError(error.message);
   });
 });

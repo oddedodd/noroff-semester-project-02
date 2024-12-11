@@ -7,9 +7,12 @@ authGuard();
 const username = localStorage.getItem('username');
 
 async function getProfile() {
-  const response = await fetch(`${API_BASE}/auction/profiles/${username}?_listings=true`, {
-    headers: headers(),
-  });
+  const response = await fetch(
+    `${API_BASE}/auction/profiles/${username}?_listings=true`,
+    {
+      headers: headers(),
+    },
+  );
 
   const { data } = await response.json();
   console.log(data);
@@ -21,15 +24,16 @@ async function getProfile() {
   // Update avatar image and image alt text
   if (data.avatar && data.avatar.url) {
     document.querySelector('.rounded-full').src = data.avatar.url;
-    document.querySelector('.rounded-full').alt = data.avatar.alt || `${data.name}'s avatar`;
+    document.querySelector('.rounded-full').alt =
+      data.avatar.alt || `${data.name}'s avatar`;
   }
-  
+
   // Update listings
   const listingsContainer = document.querySelector('.grid');
   listingsContainer.innerHTML = ''; // Clear existing listings
 
   if (data.listings && data.listings.length > 0) {
-    data.listings.forEach(listing => {
+    data.listings.forEach((listing) => {
       const listingHtml = `
         <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
           <img src="${listing.media[0]?.url || 'https://via.placeholder.com/300x200'}" 
@@ -45,7 +49,8 @@ async function getProfile() {
       listingsContainer.insertAdjacentHTML('beforeend', listingHtml);
     });
   } else {
-    listingsContainer.innerHTML = '<p class="col-span-full text-center text-gray-500">No listings found</p>';
+    listingsContainer.innerHTML =
+      '<p class="col-span-full text-center text-gray-500">No listings found</p>';
   }
 }
 

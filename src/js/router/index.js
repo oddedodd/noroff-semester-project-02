@@ -11,11 +11,9 @@ export default async function router(pathname = window.location.pathname) {
       await import('./views/login.js');
       break;
     case '/profile/':
-      console.log('Importing profile.js');
       await import('./views/profile.js');
       break;
     case '/auth/logout/':
-      console.log('Importing logout.js');
       await import('../utilities/logout.js');
       break;
     case '/listings/':
@@ -23,22 +21,11 @@ export default async function router(pathname = window.location.pathname) {
       await import('./views/listings.js');
       break;
     case '/listings/add/':
-      console.log('Importing createListing.js');
       await import('./views/createListing.js');
       break;
-    //   case "/auth/":
-    //     await import("./views/auth.js");
-    //     break;
-
-    //   case "/post/":
-    //     await import("./views/post.js");
-    //     break;
-    //   case "/post/edit/":
-    //     await import("./views/postEdit.js");
-    //     break;
-    //   case "/post/create/":
-    //     await import("./views/postCreate.js");
-    //     break;
+    case '/auth/':
+      window.location.href = `/auth/login/`;
+      break;
 
     default:
       console.log('Default case triggered');

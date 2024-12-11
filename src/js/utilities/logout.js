@@ -1,8 +1,8 @@
-import { Logout } from "../api/auth/logout";
+import { Logout } from '../api/auth/logout';
 
 export function setLogoutListener(event) {
   event.preventDefault();
-  if (confirm("Are you sure you want to log out?")) {
+  if (confirm('Are you sure you want to log out?')) {
     Logout();
   }
 }
