@@ -19,8 +19,12 @@ export default async function router(pathname = window.location.pathname) {
       await import('../utilities/logout.js');
       break;
     case '/listings/':
-      console.log('Importing listigs.js');
+      console.log('Importing listings.js');
       await import('./views/listings.js');
+      break;
+    case '/listings/add/':
+      console.log('Importing createListing.js');
+      await import('./views/createListing.js');
       break;
     //   case "/auth/":
     //     await import("./views/auth.js");
