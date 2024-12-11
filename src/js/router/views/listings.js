@@ -14,7 +14,7 @@ function createListingCard(listing) {
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <img src="${imageUrl}" alt="${listing.title}" class="w-full h-48 object-cover">
             <div class="p-4">
-                <h3 class="text-xl font-semibold mb-2">${listing.title}</h3>
+                <a href="/listings/view/?id=${listing.id}"><h3 class="text-xl font-semibold mb-2">${listing.title}</h3></a>
                 <p class="text-gray-600">${listing.description || 'No description available'}</p>
                 <div class="mt-4">
                     <p class="text-blue-600">Current bids: ${listing._count.bids}</p>

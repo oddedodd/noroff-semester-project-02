@@ -17,11 +17,14 @@ export default async function router(pathname = window.location.pathname) {
       await import('../utilities/logout.js');
       break;
     case '/listings/':
-      console.log('Importing listings.js');
       await import('./views/listings.js');
       break;
     case '/listings/add/':
       await import('./views/createListing.js');
+      break;
+    case '/listings/view/':
+      console.log('Importing viewListing.js');
+      await import('./views/viewListing.js');
       break;
     case '/auth/':
       window.location.href = `/auth/login/`;

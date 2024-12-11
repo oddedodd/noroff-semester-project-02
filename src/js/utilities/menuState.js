@@ -1,6 +1,7 @@
 import { setLogoutListener } from './logout.js';
 
 export function updateMenuState() {
+    console.log('updateMenuState');
   const isLoggedIn = localStorage.getItem('username') !== null;
 
   // Get all relevant elements
@@ -29,4 +30,8 @@ export function updateMenuState() {
 }
 
 // Call this function when the page loads
-document.addEventListener('DOMContentLoaded', updateMenuState);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', updateMenuState);
+} else {
+  updateMenuState();
+}
