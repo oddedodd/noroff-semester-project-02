@@ -1,37 +1,41 @@
-// This function controls which JavaScript file is loaded on which page
-// In order to add additional pages, you will need to implement them below
-// You may change the behaviour or approach of this file if you choose
 export default async function router(pathname = window.location.pathname) {
-    switch (pathname) {
-        case "/":
-            await import("./views/home.js");
-            break;
-        case "/test":
-            await import("./views/test.js");
-            break;
-    //   case "/auth/":
-    //     await import("./views/auth.js");
-    //     break;
-    //   case "/auth/login/":
-    //     await import("./views/login.js");
-    //     break;
-    //   case "/auth/register/":
-    //     await import("./views/register.js");
-    //     break;
-    //   case "/post/":
-    //     await import("./views/post.js");
-    //     break;
-    //   case "/post/edit/":
-    //     await import("./views/postEdit.js");
-    //     break;
-    //   case "/post/create/":
-    //     await import("./views/postCreate.js");
-    //     break;
-    //   case "/profile/":
-    //     await import("./views/profile.js");
-    //     break;
-      default:
-        await import("./views/test.js");
-    }
+  console.log('Current pathname:', pathname);
+  switch (pathname) {
+    case '/':
+      await import('./views/home.js');
+      break;
+    case '/auth/register/':
+      await import('./views/register.js');
+      break;
+    case '/auth/login/':
+      await import('./views/login.js');
+      break;
+    case '/profile/':
+      await import('./views/profile.js');
+      break;
+    case '/profile/update/':
+      console.log('Importing profileUpdate.js');
+      await import('./views/profileUpdate.js');
+      break;
+    case '/auth/logout/':
+      await import('../utilities/logout.js');
+      break;
+    case '/listings/':
+      await import('./views/listings.js');
+      break;
+    case '/listings/add/':
+      await import('./views/createListing.js');
+      break;
+    case '/listings/view/':
+      console.log('Importing viewListing.js');
+      await import('./views/viewListing.js');
+      break;
+    case '/auth/':
+      window.location.href = `/auth/login/`;
+      break;
+
+    default:
+      console.log('Default case triggered');
+      await import('./views/test.js');
   }
-  
+}

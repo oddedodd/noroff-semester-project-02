@@ -11,7 +11,7 @@
     <header class="bg-white flex place-content-center h-24">
       <nav class="container flex justify-between items-center px-4">
         <div>
-          <img src="flipbid-logo01.svg" class="w-44" alt="">
+          <a href="/"><img src="/flipbid-logo01.svg" class="w-44" alt=""></a>
         </div>
         <div class="flex items-center">
           <!-- Desktop menu -->
@@ -31,12 +31,20 @@
             <a href="/auth/login/" class="signin-btn bg-charcoal hover:bg-ecru text-white uppercase font-semibold rounded px-5 py-2 mr-4">Sign in</a>
             <button class="hidden logout-btn bg-ecru hover:bg-scarlet text-white uppercase font-semibold rounded px-5 py-2 mr-4">Log out</button>
           </div>
+          <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900">
+            <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="close-icon" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
         </div>
       </nav>
 
       <!-- Mobile menu -->
       <div id="mobile-menu" class="hidden md:hidden fixed top-24 left-0 right-0 bg-white border-t border-gray-200">
-        <ul class="flex flex-col items-center py-4">  
+        <ul class="flex flex-col items-center py-4">
           <li class="py-2"><a href="/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Home</a></li>
           <li class="py-2"><a href="/listings/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Listings</a></li>
           <li class="py-2"><a href="/about/" class="uppercase font-medium text-dark-purple hover:text-scarlet">About</a></li>
@@ -44,19 +52,39 @@
         </ul>
       </div>
     </header>
-    </section>
     <main>
-      <section id="hero"></section>
-      <section id="featured" class="container mx-auto px-6 py-3 bg-background-secondary"></section>
-  </main>
-    <!-- <footer class="bg-white">
-      <div class="container mx-auto px-6 py-3">
-        <div class="flex justify-between items-center">
-          <p class="text-xl text-white">FlipBid</p>
-          <p class="py-2 text-white">All rights reserved</p>
+      <section class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-8">
+          <h1 class="text-3xl font-bold text-dark-purple">All Listings</h1>
+          <a href="/listings/add/" class="bg-charcoal hover:bg-ecru text-white font-semibold rounded px-5 py-2">
+            Create new listing
+          </a>
         </div>
-      </div>
-    </footer> -->
-    
+        
+        <!-- Search input and filter -->
+        <div class="mb-6 flex gap-4">
+            <input 
+              type="text" 
+              id="search-input"
+              placeholder="Search listings... start typing"
+              class="w-[60%] md:w-[90%] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-dark-purple"
+            >
+            <select 
+                id="filter-listings" 
+                class="w-[40%] md:w-[10%] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-dark-purple"
+            >
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="active">Active Only</option>
+                <option value="inactive">Inactive Only</option>
+            </select>
+        </div>
+
+        <!-- Grid of listings - Empty container to be filled by JS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <!-- Dynamic content will be inserted here -->
+        </div>
+      </section>
+    </main>
   </body>
 </html>

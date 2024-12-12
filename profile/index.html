@@ -11,7 +11,7 @@
     <header class="bg-white flex place-content-center h-24">
       <nav class="container flex justify-between items-center px-4">
         <div>
-          <img src="flipbid-logo01.svg" class="w-44" alt="">
+          <a href="/"><img src="/flipbid-logo01.svg" class="w-44" alt=""></a>
         </div>
         <div class="flex items-center">
           <!-- Desktop menu -->
@@ -31,12 +31,20 @@
             <a href="/auth/login/" class="signin-btn bg-charcoal hover:bg-ecru text-white uppercase font-semibold rounded px-5 py-2 mr-4">Sign in</a>
             <button class="hidden logout-btn bg-ecru hover:bg-scarlet text-white uppercase font-semibold rounded px-5 py-2 mr-4">Log out</button>
           </div>
+          <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900">
+            <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="close-icon" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
         </div>
       </nav>
 
       <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden fixed top-24 left-0 right-0 bg-white border-t border-gray-200">
-        <ul class="flex flex-col items-center py-4">  
+      <div id="mobile-menu" class="hidden md:hidden fixed top-24 left-0 right-0 bg-white border-t border-gray-200 h-[300px]">
+        <ul class="flex flex-col items-center py-4">
           <li class="py-2"><a href="/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Home</a></li>
           <li class="py-2"><a href="/listings/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Listings</a></li>
           <li class="py-2"><a href="/about/" class="uppercase font-medium text-dark-purple hover:text-scarlet">About</a></li>
@@ -44,19 +52,44 @@
         </ul>
       </div>
     </header>
-    </section>
     <main>
-      <section id="hero"></section>
-      <section id="featured" class="container mx-auto px-6 py-3 bg-background-secondary"></section>
-  </main>
-    <!-- <footer class="bg-white">
-      <div class="container mx-auto px-6 py-3">
-        <div class="flex justify-between items-center">
-          <p class="text-xl text-white">FlipBid</p>
-          <p class="py-2 text-white">All rights reserved</p>
+      <section class="container mx-auto px-4 py-8">
+        <div class="mx-auto">
+          
+          <!-- Profile Header -->
+          <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+              <!-- Profile Image -->
+              <div class="w-48 h-48 flex-shrink-0">
+                <img 
+                  src="https://via.placeholder.com/200" 
+                  alt="Profile Picture" 
+                  class="w-full h-full rounded-full object-cover border-4 border-blue-950"
+                >
+              </div>
+              <!-- Profile Info -->
+              <div class="flex-grow text-center md:text-left">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2" id="profile-name"></h1>
+                <p class="text-gray-600" id="profile-email"></p>
+                <p class="mt-4">
+                  <a href="/profile/update/" class="bg-charcoal hover:bg-ecru text-white font-semibold rounded px-5 py-2">Update Profile</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Listings -->
+          <div class="bg-white rounded-lg shadow-lg p-8">
+            <div class="flex justify-between items-center mb-8">
+              <h2 class="text-2xl font-bold text-dark-purple">My Listings</h2>
+              <a href="/listings/add/" class="bg-charcoal hover:bg-ecru text-white font-semibold rounded px-5 py-2">
+                Create Listing
+              </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+          </div>
         </div>
-      </div>
-    </footer> -->
-    
-  </body>
-</html>
+      </section>
+  </main>
+    </section>
