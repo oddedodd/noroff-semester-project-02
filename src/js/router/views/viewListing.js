@@ -2,7 +2,6 @@ import { API_BASE } from '../../api/constants';
 import { headers } from '../../api/headers.js';
 
 export default async function viewListing() {
-  // Get listing ID from URL
   const urlParams = new URLSearchParams(window.location.search);
   const listingId = urlParams.get('id');
 

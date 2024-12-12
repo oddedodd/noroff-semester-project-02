@@ -54,18 +54,16 @@ async function displayListings(page = 1) {
 
   const response = await fetchListings(page);
 
-  if (!response?.data) {
-    listingsContainer.innerHTML =
-      '<div class="col-span-full text-center py-8">Error loading listings</div>';
-    return;
-  }
-
-  listingsContainer.innerHTML = response.data
-    .map((listing) => createListingCard(listing))
-    .join('');
+  listingsContainer.innerHTML = '';
+  response.data.forEach((listing) => {
+    listingsContainer.innerHTML += createListingCard(listing);
+  });
 
   const existingPagination = document.querySelector('.pagination-controls');
-  if (existingPagination) existingPagination.remove();
+
+  if (existingPagination) {
+    existingPagination.remove();
+  }
 
   const paginationControls = createPaginationControls(response.meta);
   sectionContainer.insertAdjacentHTML(
@@ -79,6 +77,54 @@ async function displayListings(page = 1) {
       displayListings(newPage);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+  });
+  initializeSearch();
+}
+
+function initializeSearch() {
+  const searchInput = document.querySelector('#search-input');
+  const listingsGrid = document.querySelector('.grid');
+
+  let debounceTimer = "";
+
+  searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.trim();
+
+    // Clear the previous timer
+    clearTimeout(debounceTimer);
+
+    // making sure the search term is at least 3 characters before calling the API
+    if (searchTerm.length < 3) {
+      if (searchTerm.length === 0) {
+        displayListings(1);
+      }
+      return;
+    }
+
+    // Make sure we don't make too many requests to the APIs
+    debounceTimer = setTimeout(async () => {
+      const searchingContainer = document.createElement('div');
+      searchingContainer.classList.add('col-span-full', 'text-center', 'py-8');
+      searchingContainer.textContent = 'Searching...';
+      listingsGrid.innerHTML = '';
+      listingsGrid.appendChild(searchingContainer);
+
+      const response = await fetch(
+        `${API_BASE}/auction/listings/search?q=${searchTerm}&_seller=true&sort=created&sortOrder=desc`,
+      );
+      const data = await response.json();
+
+      if (!data.data || data.data.length === 0) {
+        listingsGrid.innerHTML =
+          '<div class="col-span-full text-center py-8">No listings found</div>';
+        return;
+      }
+
+      listingsGrid.innerHTML = '';
+      data.data.forEach(listing => {
+        listingsGrid.innerHTML += createListingCard(listing);
+      });
+    }, 300); // Wait 300ms after user stops typing before making API call
   });
 }
 
