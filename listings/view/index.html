@@ -43,7 +43,7 @@
       </nav>
 
       <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden fixed top-24 left-0 right-0 bg-white border-t border-gray-200">
+      <div id="mobile-menu" class="hidden md:hidden fixed top-24 left-0 right-0 bg-white border-t border-gray-200 z-50">
         <ul class="flex flex-col items-center py-4">
           <li class="py-2"><a href="/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Home</a></li>
           <li class="py-2"><a href="/listings/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Listings</a></li>
@@ -59,10 +59,10 @@
           <div class="relative h-96">
             <img id="listing-image" src="https://placehold.co/800x400" alt="Listing image" class="w-full h-full object-cover">
             <div class="absolute bottom-4 right-4 flex gap-2">
-              <button class="bg-charcoal/80 hover:bg-charcoal text-white rounded-full w-8 h-8 flex items-center justify-center">
+              <button id="prev-image" class="bg-charcoal/80 hover:bg-charcoal text-white rounded-full w-8 h-8 flex items-center justify-center">
                 <span>&lt;</span>
               </button>
-              <button class="bg-charcoal/80 hover:bg-charcoal text-white rounded-full w-8 h-8 flex items-center justify-center">
+              <button id="next-image" class="bg-charcoal/80 hover:bg-charcoal text-white rounded-full w-8 h-8 flex items-center justify-center">
                 <span>&gt;</span>
               </button>
             </div>
@@ -88,10 +88,8 @@
 
             <div class="mb-6">
               <h2 class="text-xl font-semibold mb-2">Tags</h2>
-              <div class="flex flex-wrap gap-2">
-                <span class="bg-background-primary px-3 py-1 rounded-full text-sm">Vintage</span>
-                <span class="bg-background-primary px-3 py-1 rounded-full text-sm">Cameras</span>
-                <span class="bg-background-primary px-3 py-1 rounded-full text-sm">Collection</span>
+              <div id="tags-container" class="flex flex-wrap gap-2">
+                <span>Loading tags...</span>
               </div>
             </div>
 
