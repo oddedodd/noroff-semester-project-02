@@ -1,11 +1,34 @@
 import { API_BASE } from '../../api/constants';
 
-async function fetchListings(page = 1, limit = 12) {
-  const response = await fetch(
-    `${API_BASE}/auction/listings?page=${page}&limit=${limit}&_seller=true&sort=created&sortOrder=desc`,
-  );
-  const data = await response.json();
-  return data;
+async function fetchListings(page = 1, limit = 12, filterOption = 'newest') {
+  try {
+    let url = `${API_BASE}/auction/listings?page=${page}&limit=${limit}&_seller=true`;
+
+    switch (filterOption) {
+      case 'newest':
+        url += '&sort=created&sortOrder=desc';
+        break;
+      case 'oldest':
+        url += '&sort=created&sortOrder=asc';
+        break;
+      case 'active':
+        url += '&_active=true';
+        break;
+      case 'inactive':
+        url += '&_active=false';
+        break;
+    }
+
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching listings:', error);
+    throw error;
+  }
 }
 
 function createListingCard(listing) {
@@ -27,7 +50,7 @@ function createListingCard(listing) {
     `;
 }
 
-function createPaginationControls(meta) {
+function createPagination(meta) {
   return `
         <div class="flex justify-center gap-4 mt-8">
             ${
@@ -45,14 +68,16 @@ function createPaginationControls(meta) {
     `;
 }
 
-async function displayListings(page = 1) {
+async function displayListings(page = 1, filterOption = 'newest') {
   const listingsContainer = document.querySelector('.grid');
   const sectionContainer = document.querySelector('section');
 
   listingsContainer.innerHTML =
     '<div class="col-span-full text-center py-8">Loading listings...</div>';
 
-  const response = await fetchListings(page);
+  const response = await fetchListings(page, 12, filterOption);
+
+  console.log(response);
 
   listingsContainer.innerHTML = '';
   response.data.forEach((listing) => {
@@ -65,7 +90,7 @@ async function displayListings(page = 1) {
     existingPagination.remove();
   }
 
-  const paginationControls = createPaginationControls(response.meta);
+  const paginationControls = createPagination(response.meta);
   sectionContainer.insertAdjacentHTML(
     'beforeend',
     `<div class="pagination-controls">${paginationControls}</div>`,
@@ -74,11 +99,11 @@ async function displayListings(page = 1) {
   document.querySelectorAll('.pagination-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       const newPage = parseInt(e.target.dataset.page);
-      displayListings(newPage);
+      displayListings(newPage, filterOption);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
-  initializeSearch();
+  
 }
 
 function initializeSearch() {
@@ -128,4 +153,19 @@ function initializeSearch() {
   });
 }
 
-displayListings();
+function initializeFilter() {
+  const filterSelect = document.querySelector('#filter-listings');
+  
+  filterSelect.addEventListener('change', (e) => {
+    const filterOption = e.target.value;
+    displayListings(1, filterOption);
+  });
+}
+
+function initialize() {
+  displayListings();
+  initializeSearch();
+  initializeFilter();
+}
+
+initialize();
