@@ -57,10 +57,29 @@
         <div class="flex justify-between items-center mb-8">
           <h1 class="text-3xl font-bold text-dark-purple">All Listings</h1>
           <a href="/listings/add/" class="bg-charcoal hover:bg-ecru text-white font-semibold rounded px-5 py-2">
-            Create Listing
+            Create new listing
           </a>
         </div>
         
+        <!-- Search input and filter -->
+        <div class="mb-6 flex gap-4">
+            <input 
+              type="text" 
+              id="search-input"
+              placeholder="Search listings... start typing"
+              class="w-[60%] md:w-[90%] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-dark-purple"
+            >
+            <select 
+                id="filter-select" 
+                class="w-[40%] md:w-[10%] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-dark-purple"
+            >
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="active">Active Only</option>
+                <option value="inactive">Inactive Only</option>
+            </select>
+        </div>
+
         <!-- Grid of listings - Empty container to be filled by JS -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <!-- Dynamic content will be inserted here -->
