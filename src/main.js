@@ -20,6 +20,5 @@ mobileMenuButton.addEventListener('click', function () {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  updateAuthButtons();
   updateMenuState();
 });
