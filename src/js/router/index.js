@@ -13,6 +13,10 @@ export default async function router(pathname = window.location.pathname) {
     case '/profile/':
       await import('./views/profile.js');
       break;
+    case '/profile/update/':
+      console.log('Importing profileUpdate.js');
+      await import('./views/profileUpdate.js');
+      break;
     case '/auth/logout/':
       await import('../utilities/logout.js');
       break;
