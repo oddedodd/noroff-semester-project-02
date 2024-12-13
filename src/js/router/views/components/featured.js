@@ -31,16 +31,16 @@ function createFeaturedSection() {
         console.log(listing.media[0]);
         listingsHTML += `
           <div class="flex-shrink-0 w-80 snap-start">
-              <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                  <img src="${listing.media && listing.media[0] && listing.media[0].url ? listing.media[0].url : 'https://placehold.co/320x200'}"
+              <div class="bg-background-scarlet-light p-4 rounded-xl overflow-hidden">
+                  <a href="/listings/view/?id=${listing.id}"><img src="${listing.media && listing.media[0] && listing.media[0].url ? listing.media[0].url : 'https://placehold.co/320x200'}"
                        alt="${listing.title}" 
-                       class="w-full h-48 object-cover">
+                       class="w-full h-48 object-cover rounded-xl"></a>
                   <div class="p-4">
-                      <h3 class="text-xl font-semibold mb-2">${listing.title}</h3>
-                      <p class="text-gray-600">${(listing.description || 'No description available').slice(0, 20)}...</p>
+                      <a href="/listings/view/?id=${listing.id}" class="hover:text-scarlet"><h3 class="text-xl font-semibold mb-2 capitalize">${listing.title}</h3></a>
+                      <p class="text-charcoal">${(listing.description || 'No description available').slice(0, 20)}...</p>
                       <div class="mt-2 text-sm">
-                          <p class="text-blue-600">Current bids: ${listing._count?.bids || 0}</p>
-                          <p class="font-semibold">Ends: ${new Date(listing.endsAt).toLocaleDateString()}</p>
+                          <p class="text-charcoal">Current bids: ${listing._count?.bids || 0}</p>
+                          <p class="text-charcoal font-semibold">Ends: ${new Date(listing.endsAt).toLocaleDateString()}</p>
                       </div>
                   </div>
               </div>
