@@ -5,7 +5,7 @@ import { API_BASE } from '../../api/constants.js';
 authGuard();
 
 const username = localStorage.getItem('username');
-
+console.log(username);
 async function getProfile() {
   const response = await fetch(
     `${API_BASE}/auction/profiles/${username}?_listings=true`,
@@ -34,14 +34,16 @@ async function getProfile() {
 
   if (data.listings && data.listings.length > 0) {
     data.listings.forEach((listing) => {
+      console.log(listing);
       const listingHtml = `
         <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
-          <img src="${listing.media[0]?.url || 'https://via.placeholder.com/300x200'}" 
+          <a href="/listings/view/?id=${listing.id}"><img src="${listing.media[0]?.url || 'https://via.placeholder.com/300x200'}" 
                alt="${listing.media[0]?.alt || listing.title}" 
-               class="w-full h-48 object-cover">
+               class="w-full h-48 object-cover"></a>
           <div class="p-4">
-            <h3 class="font-bold text-lg mb-2">${listing.title}</h3>
+            <a href="/listings/view/?id=${listing.id}" class="text-dark-purple hover:text-scarlet"><h3 class="font-bold text-lg mb-2">${listing.title}</h3></a>
             <p class="text-gray-600 mb-2">${listing.description}</p>
+            <p class="text-gray-600 mb-2">${data.bid}</p>
             <p class="text-sm text-gray-500">Ends at: ${new Date(listing.endsAt).toLocaleDateString()}</p>
           </div>
         </div>
