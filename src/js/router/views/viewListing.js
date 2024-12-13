@@ -56,8 +56,8 @@ export default async function viewListing() {
     : 0;
 
   if (highestBid > 0) {
-    document.querySelector('#listing-price').textContent =
-      `Current Bid: $${highestBid}`;
+    document.querySelector('#listing-price').innerHTML =
+      `<span class="text-scarlet text-lg font-bold">Current Bid: ${highestBid} </span> <span class="text-gray-600">credits</span>`;
   } else {
     document.querySelector('#listing-price').textContent = 'No bids yet';
   }
@@ -125,9 +125,9 @@ export default async function viewListing() {
       .map(
         (bid) => `
       <div class="flex justify-between items-center py-2">
-        <span class="font-medium">${bid.bidder.name}</span>
-        <span class="text-scarlet font-semibold">$${bid.amount}</span>
-        <span class="text-gray-500 text-sm">${getTimeAgo(new Date(bid.created))}</span>
+        <div class="font-medium">${bid.bidder.name}</div>
+        <div><span class="text-scarlet text-lg font-bold">${bid.amount}</span> <span class="text-sm text-gray-500">credits</span></div>
+        <div class="text-gray-500 text-sm">${getTimeAgo(new Date(bid.created))}</div>
       </div>
     `,
       )
