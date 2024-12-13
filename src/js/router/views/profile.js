@@ -20,6 +20,7 @@ async function getProfile() {
   // Update profile information
   document.querySelector('#profile-name').textContent = data.name;
   document.querySelector('#profile-email').textContent = data.email;
+  document.querySelector('#profile-credits').textContent = data.credits;
 
   // Update avatar image and image alt text
   if (data.avatar && data.avatar.url) {

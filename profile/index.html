@@ -51,7 +51,7 @@
       </div>
     </header>
     <main>
-      <section class="container mx-auto px-4 py-8">
+      <section class="max-w-4xl container mx-auto px-4 py-8">
         <div class="mx-auto">
           
           <!-- Profile Header -->
@@ -69,7 +69,11 @@
               <div class="flex-grow text-center md:text-left">
                 <h1 class="text-3xl font-bold text-gray-900 mb-2" id="profile-name"></h1>
                 <p class="text-gray-600" id="profile-email"></p>
-                <p class="mt-4">
+                <p>
+                  <span class="text-scarlet text-4xl font-bold" id="profile-credits">0</span>
+                  <span class="text-gray-600"> credits available</span>
+                </p>
+                <p class="mt-6">
                   <a href="/profile/update/" class="bg-charcoal hover:bg-ecru text-white font-semibold rounded px-5 py-2">Update Profile</a>
                 </p>
               </div>
@@ -85,7 +89,7 @@
               </a>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
           </div>
         </div>
       </section>
