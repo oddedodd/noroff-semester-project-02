@@ -44,7 +44,6 @@ async function getProfile() {
           <div class="p-4">
             <a href="/listings/view/?id=${listing.id}" class="text-dark-purple hover:text-scarlet"><h3 class="font-bold text-lg mb-2">${listing.title}</h3></a>
             <p class="text-gray-600 mb-2">${listing.description}</p>
-            <p class="text-gray-600 mb-2">${data.bid}</p>
             <p class="text-sm text-gray-500">Ends at: ${new Date(listing.endsAt).toLocaleDateString()}</p>
           </div>
         </div>
