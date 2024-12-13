@@ -2,8 +2,6 @@ import { fetchListings } from '../../api/listings/listings';
 import { createListingCard, createPagination } from './components/listingCard';
 import { initializeSearch, initializeFilter } from '../../utilities/listingHandlers';
 
-console.log('HEI VERDEN!');
-
 export async function displayListings(page = 1, filterOption = 'newest') {
   const listingsContainer = document.querySelector('.grid');
   const sectionContainer = document.querySelector('section');

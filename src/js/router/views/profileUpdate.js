@@ -43,7 +43,6 @@ async function updateProfile() {
     alert('Failed to update profile.');
   }
 }
-
 document.addEventListener('submit', async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
