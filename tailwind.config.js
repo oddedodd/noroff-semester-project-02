@@ -20,7 +20,7 @@ export default {
           ecru: '#C8B181',
           scarlet: '#F42C04',
           'scarlet-light': '#FEC9B6',
-          'scarlet-extra-light': '#FFE4DFs',
+          'scarlet-extra-light': '#FFE4DF',
           turquoise: '#34D1BF',
           'dark-purple': '#31081F',
         },
