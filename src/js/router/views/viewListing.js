@@ -43,7 +43,6 @@ export default async function viewListing() {
 
   const { data: listing } = await response.json();
 
-  // Update listing details in the HTML
   document.title = `FlipBid - ${listing.title}`;
   document.querySelector('#listing-title').textContent = listing.title;
   document.querySelector('#listing-description').textContent =
