@@ -1,47 +1,59 @@
+import { API_BASE } from '../../../api/constants';
+
 function createFeaturedSection() {
   const featuredSection = document.querySelector('#featured');
   if (!featuredSection) return;
 
   // Initially set loading state
-  featuredSection.innerHTML = `
-        <div class="container mx-auto px-4 py-8">
-            <h2 class="text-3xl font-bold mb-6">Featured Listings</h2>
-            <div class="text-center">Loading featured listings...</div>
-        </div>
-    `;
+  const container = document.createElement('div');
+  container.className = 'container mx-auto px-4 py-8';
 
+  const heading = document.createElement('h2');
+  heading.className = 'text-3xl font-bold mb-6';
+  heading.textContent = 'Featured Listings';
+
+  const loadingDiv = document.createElement('div');
+  loadingDiv.className = 'text-center';
+  loadingDiv.textContent = 'Loading featured listings...';
+
+  container.appendChild(heading);
+  container.appendChild(loadingDiv);
+  featuredSection.appendChild(container);
+    
   // Fetch listings from API
-  fetch('https://api.noroff.dev/api/v1/auction/listings?_bids=true')
+  fetch(`${API_BASE}/auction/listings?_bids=true&sort=created&sortOrder=desc`)
     .then((response) => response.json())
-    .then((listings) => {
-      const featuredListings = listings.slice(0, 5);
+    .then((data) => {
+      const featuredListings = data.data.slice(0, 10  );
+      let listingsHTML = '';
+      
+      featuredListings.forEach(listing => {
+        console.log(listing.media[0]);
+        listingsHTML += `
+          <div class="flex-shrink-0 w-80 snap-start">
+              <div class="bg-background-scarlet-light p-4 rounded-xl overflow-hidden">
+                  <a href="/listings/view/?id=${listing.id}"><img src="${listing.media && listing.media[0] && listing.media[0].url ? listing.media[0].url : 'https://placehold.co/320x200'}"
+                       alt="${listing.title}" 
+                       class="w-full h-48 object-cover rounded-xl"></a>
+                  <div class="p-4">
+                      <a href="/listings/view/?id=${listing.id}" class="hover:text-scarlet"><h3 class="text-xl font-semibold mb-2 capitalize">${listing.title}</h3></a>
+                      <p class="text-charcoal">${(listing.description || 'No description available').slice(0, 20)}...</p>
+                      <div class="mt-2 text-sm">
+                          <p class="text-charcoal">Current bids: ${listing._count?.bids || 0}</p>
+                          <p class="text-charcoal font-semibold">Ends: ${new Date(listing.endsAt).toLocaleDateString()}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        `;
+      });
 
       featuredSection.innerHTML = `
                 <div class="container mx-auto px-4 py-8">
                     <h2 class="text-3xl font-bold mb-6">Featured Listings</h2>
                     <div class="relative">
                         <div class="overflow-x-auto flex gap-4 snap-x snap-mandatory scroll-smooth pb-4" id="cardContainer">
-                            ${featuredListings
-                              .map(
-                                (listing) => `
-                                <div class="flex-shrink-0 w-80 snap-start">
-                                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                                        <img src="${listing.media[0] || 'https://placehold.co/320x200'}" 
-                                             alt="${listing.title}" 
-                                             class="w-full h-48 object-cover">
-                                        <div class="p-4">
-                                            <h3 class="text-xl font-semibold mb-2">${listing.title}</h3>
-                                            <p class="text-gray-600">${listing.description || 'No description available'}</p>
-                                            <div class="mt-2 text-sm">
-                                                <p class="text-blue-600">Current bids: ${listing._count?.bids || 0}</p>
-                                                <p class="font-semibold">Ends: ${new Date(listing.endsAt).toLocaleDateString()}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            `,
-                              )
-                              .join('')}
+                            ${listingsHTML}
                         </div>
                         <div class="absolute top-1/2 -translate-y-1/2 flex justify-between w-full px-4 pointer-events-none">
                             <button class="pointer-events-auto bg-white/80 hover:bg-white rounded-full p-2 shadow-md" onclick="scrollCards('left')">
@@ -98,16 +110,7 @@ function createFeaturedSection() {
       container.addEventListener('touchend', () => {
         startX = null;
       });
-    })
-    .catch((error) => {
-      console.error('Error fetching listings:', error);
-      featuredSection.innerHTML = `
-                <div class="container mx-auto px-4 py-8">
-                    <h2 class="text-3xl font-bold mb-6">Featured Listings</h2>
-                    <div class="text-center text-red-600">Error loading listings. Please try again later.</div>
-                </div>
-            `;
     });
 }
 
-export { createFeaturedSection };
+export { createFeaturedSection};

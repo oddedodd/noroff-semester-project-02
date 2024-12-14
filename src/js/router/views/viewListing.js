@@ -56,8 +56,8 @@ export default async function viewListing() {
     : 0;
 
   if (highestBid > 0) {
-    document.querySelector('#listing-price').textContent =
-      `Current Bid: $${highestBid}`;
+    document.querySelector('#listing-price').innerHTML =
+      `<span class="text-scarlet text-lg font-bold">Current Bid: ${highestBid} </span> <span class="text-gray-600">credits</span>`;
   } else {
     document.querySelector('#listing-price').textContent = 'No bids yet';
   }
@@ -119,19 +119,23 @@ export default async function viewListing() {
 
   // Update bid history
   const bidsContainer = document.querySelector('#bids-container');
-  bidsContainer.innerHTML =
-    listing.bids
-      ?.sort((a, b) => new Date(b.created) - new Date(a.created))
-      .map(
-        (bid) => `
+  bidsContainer.innerHTML = '';
+  
+  if (listing.bids?.length) {
+    listing.bids.sort((a, b) => new Date(b.created) - new Date(a.created));
+    listing.bids.forEach(bid => {
+        console.log(bid);
+      bidsContainer.innerHTML += `
       <div class="flex justify-between items-center py-2">
-        <span class="font-medium">${bid.bidder.name}</span>
-        <span class="text-scarlet font-semibold">$${bid.amount}</span>
-        <span class="text-gray-500 text-sm">${getTimeAgo(new Date(bid.created))}</span>
+        <div class="font-medium flex items-center gap-2"><img src="${bid.bidder.avatar ? bid.bidder.avatar.url : 'https://via.placeholder.com/32'}" alt="${bid.bidder.name}'s avatar" class="w-8 h-8 rounded-full object-cover">${bid.bidder.name}</div>
+        <div><span class="text-scarlet text-lg font-bold">${bid.amount}</span> <span class="text-sm text-gray-500">credits</span></div>
+        <div class="text-gray-500 text-sm">${getTimeAgo(new Date(bid.created))}</div>
       </div>
-    `,
-      )
-      .join('') || '<p class="text-gray-500">No bids yet</p>';
+      `;
+    });
+  } else {
+    bidsContainer.innerHTML = '<p class="text-gray-500">No bids yet</p>';
+  }
 
   // Add bid form handler
   const bidForm = document.querySelector('form');
