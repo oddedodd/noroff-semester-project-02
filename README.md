@@ -1,6 +1,6 @@
 # NOROFF Semester Project 02
 
-![FlipBid Online Auctions](https://github.com/oddedodd/noroff-semester-project-02/raw/main/public/images/flipbid-preview.png)
+![FlipBid Online Auctions](https://flipbid.netlify.app/flipbid-preview.png)
 
 ## Description
 
