@@ -1,5 +1,13 @@
 import { API_BASE } from '../../../api/constants';
 
+/**
+ * Creates and displays a featured listings section with horizontal scrolling
+ * @function createFeaturedSection
+ * @description Fetches recent listings from the API and displays them in a 
+ * horizontally scrollable container with navigation buttons. Includes touch 
+ * scroll support for mobile devices.
+ * @returns {void}
+ */
 function createFeaturedSection() {
   const featuredSection = document.querySelector('#featured');
   if (!featuredSection) return;
@@ -19,16 +27,15 @@ function createFeaturedSection() {
   container.appendChild(heading);
   container.appendChild(loadingDiv);
   featuredSection.appendChild(container);
-    
+
   // Fetch listings from API
   fetch(`${API_BASE}/auction/listings?_bids=true&sort=created&sortOrder=desc`)
     .then((response) => response.json())
     .then((data) => {
-      const featuredListings = data.data.slice(0, 10  );
+      const featuredListings = data.data.slice(0, 10);
       let listingsHTML = '';
-      
-      featuredListings.forEach(listing => {
-        console.log(listing.media[0]);
+
+      featuredListings.forEach((listing) => {
         listingsHTML += `
           <div class="flex-shrink-0 w-80 snap-start">
               <div class="bg-background-scarlet-light p-4 rounded-xl overflow-hidden">
@@ -71,10 +78,14 @@ function createFeaturedSection() {
                 </div>
             `;
 
-      // Add scroll functionality
+      /**
+       * Scrolls the card container left or right
+       * @function scrollCards
+       * @param {string} direction - The scroll direction ('left' or 'right')
+       */
       window.scrollCards = function (direction) {
-        const container = document.getElementById('cardContainer');
-        const scrollAmount = 320; // Width of one card
+        const container = document.querySelector('#cardContainer');
+        const scrollAmount = 320; 
 
         if (direction === 'left') {
           container.scrollBy({
@@ -91,7 +102,7 @@ function createFeaturedSection() {
 
       // Add touch scroll functionality for mobile
       let startX;
-      const container = document.getElementById('cardContainer');
+      const container = document.querySelector('#cardContainer');
 
       container.addEventListener('touchstart', (e) => {
         startX = e.touches[0].pageX;
@@ -113,4 +124,4 @@ function createFeaturedSection() {
     });
 }
 
-export { createFeaturedSection};
+export { createFeaturedSection };

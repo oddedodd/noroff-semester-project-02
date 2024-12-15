@@ -1,7 +1,19 @@
 import { fetchListings } from '../../api/listings/listings';
 import { createListingCard, createPagination } from './components/listingCard';
-import { initializeSearch, initializeFilter } from '../../utilities/listingHandlers';
+import {
+  initializeSearch,
+  initializeFilter,
+} from '../../utilities/listingHandlers';
 
+/**
+ * Displays a paginated list of auction listings
+ * @async
+ * @param {number} [page=1] - The page number to display
+ * @param {string} [filterOption='newest'] - The filter option to apply 
+ * @returns {Promise<void>} Promise that resolves when listings are displayed
+ * @description Fetches and displays auction listings with pagination controls, loading state,
+ * and scroll-to-top functionality when changing pages
+ */
 export async function displayListings(page = 1, filterOption = 'newest') {
   const listingsContainer = document.querySelector('.grid');
   const sectionContainer = document.querySelector('section');
@@ -31,7 +43,7 @@ export async function displayListings(page = 1, filterOption = 'newest') {
   const paginationControls = createPagination(response.meta);
   sectionContainer.insertAdjacentHTML(
     'beforeend',
-    `<div class="pagination-controls">${paginationControls}</div>`
+    `<div class="pagination-controls">${paginationControls}</div>`,
   );
 
   document.querySelectorAll('.pagination-btn').forEach((btn) => {
@@ -43,6 +55,11 @@ export async function displayListings(page = 1, filterOption = 'newest') {
   });
 }
 
+/**
+ * Initializes the listings page functionality
+ * @function initialize
+ * @description Sets up search and filter handlers and displays the initial listings
+ */
 function initialize() {
   initializeSearch();
   initializeFilter();

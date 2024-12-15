@@ -28,17 +28,19 @@ export function initializeSearch() {
     }
 
     debounceTimer = setTimeout(async () => {
-      listingsGrid.innerHTML = '<div class="col-span-full text-center py-8">Searching...</div>';
+      listingsGrid.innerHTML =
+        '<div class="col-span-full text-center py-8">Searching...</div>';
 
       const data = await searchListings(searchTerm);
 
       if (!data.data || data.data.length === 0) {
-        listingsGrid.innerHTML = '<div class="col-span-full text-center py-8">No listings found</div>';
+        listingsGrid.innerHTML =
+          '<div class="col-span-full text-center py-8">No listings found</div>';
         return;
       }
 
       listingsGrid.innerHTML = '';
-      data.data.forEach(listing => {
+      data.data.forEach((listing) => {
         listingsGrid.innerHTML += createListingCard(listing);
       });
     }, DEBOUNCE_DELAY);
@@ -49,7 +51,7 @@ export function initializeSearch() {
 
 export function initializeFilter() {
   const filterSelect = document.querySelector('#filter-listings');
-  
+
   filterSelect.addEventListener('change', (e) => {
     const filterOption = e.target.value;
     displayListings(1, filterOption);

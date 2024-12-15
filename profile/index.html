@@ -9,62 +9,60 @@
     <script type="module" src="/src/main.js"></script>
   </head>
   <body class="bg-background-primary">
-    <header class="bg-white flex place-content-center h-24">
-      <nav class="container flex justify-between items-center px-4">
-        <div>
-          <a href="/"><img src="/flipbid-logo01.svg" class="w-44" alt=""></a>
-        </div>
-        <div class="flex items-center">
-          <!-- Desktop menu -->
-          <ul class="hidden md:flex items-center gap-16">
-            <li><a href="/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Home</a></li>
-            <li><a href="/listings/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Listings</a></li>
-            <li class="profile-link hidden"><a href="/profile/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Profile</a></li>
-            <li class="auth-action">
-              <a href="/auth/login/" class="bg-charcoal hover:bg-ecru text-white uppercase font-semibold rounded px-5 py-2 signin-btn">Sign in</a>
-              <button class="hidden logout-btn bg-ecru hover:bg-scarlet text-white uppercase font-semibold rounded px-5 py-2">Log out</button>
-            </li>
-          </ul>
-
-          <!-- Mobile sign in and menu -->
-          <div class="md:hidden auth-action">
-            <a href="/auth/login/" class="signin-btn bg-charcoal hover:bg-ecru text-white uppercase font-semibold rounded px-5 py-2 mr-4">Sign in</a>
-            <button class="hidden logout-btn bg-ecru hover:bg-scarlet text-white uppercase font-semibold rounded px-5 py-2 mr-4">Log out</button>
+    <div class="min-h-screen flex flex-col">
+      <header class="bg-white flex place-content-center h-24">
+        <nav class="container flex justify-between items-center px-4">
+          <div>
+            <a href="/"><img src="/flipbid-logo01.svg" class="w-44" alt="FlipBid Logo"></a>
           </div>
-          <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900">
-            <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-            <svg id="close-icon" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-          </button>
-        </div>
-      </nav>
+          <div class="flex items-center">
+            <!-- Desktop menu -->
+            <ul class="hidden md:flex items-center gap-16">
+              <li><a href="/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Home</a></li>
+              <li><a href="/listings/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Listings</a></li>
+              <li class="profile-link hidden"><a href="/profile/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Profile</a></li>
+              <li class="auth-action">
+                <a href="/auth/login/" class="bg-charcoal hover:bg-ecru text-white uppercase font-semibold rounded px-5 py-2 signin-btn">Sign in</a>
+                <button class="hidden logout-btn bg-ecru hover:bg-scarlet text-white uppercase font-semibold rounded px-5 py-2">Log out</button>
+              </li>
+            </ul>
 
-      <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden fixed top-24 left-0 right-0 bg-white border-t border-gray-200 h-[300px]">
-        <ul class="flex flex-col items-center py-4">
-          <li class="py-2"><a href="/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Home</a></li>
-          <li class="py-2"><a href="/listings/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Listings</a></li>
-          <li class="py-2 profile-link hidden"><a href="/profile/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Profile</a></li>
-        </ul>
-      </div>
-    </header>
-    <main>
-      <section class="max-w-4xl container mx-auto px-4 py-8">
-        <div class="mx-auto">
-          
+            <!-- Mobile sign in and menu -->
+            <div class="md:hidden auth-action">
+              <a href="/auth/login/" class="signin-btn bg-charcoal hover:bg-ecru text-white uppercase font-semibold rounded px-5 py-2 mr-4">Sign in</a>
+              <button class="hidden logout-btn bg-ecru hover:bg-scarlet text-white uppercase font-semibold rounded px-5 py-2 mr-4">Log out</button>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900">
+              <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+              <svg id="close-icon" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden fixed top-24 left-0 right-0 bg-white border-t border-gray-200 h-[300px]">
+          <ul class="flex flex-col items-center py-4">
+            <li class="py-2"><a href="/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Home</a></li>
+            <li class="py-2"><a href="/listings/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Listings</a></li>
+            <li class="py-2 profile-link hidden"><a href="/profile/" class="uppercase font-medium text-dark-purple hover:text-scarlet">Profile</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <main class="flex-grow">
+        <section class="max-w-4xl container mx-auto px-4 py-8">
           <!-- Profile Header -->
           <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
             <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
               <!-- Profile Image -->
               <div class="w-48 h-48 flex-shrink-0">
-                <img 
-                  src="https://via.placeholder.com/200" 
-                  alt="Profile Picture" 
-                  class="w-full h-full rounded-full object-cover border-4 border-blue-950"
-                >
+                <img src="https://via.placeholder.com/200" 
+                     alt="Profile Picture" 
+                     class="w-full h-full rounded-full object-cover border-4 border-blue-950">
               </div>
               <!-- Profile Info -->
               <div class="flex-grow text-center md:text-left">
@@ -89,18 +87,19 @@
                 Create Listing
               </a>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
           </div>
+        </section>
+      </main>
+
+      <footer class="bg-background-charcoal mt-auto">
+        <div class="container mx-auto px-6 py-3">
+          <div class="flex justify-between items-center">
+            <p class="text-xl text-white">FlipBid</p>
+            <p class="py-2 text-white">All rights reserved</p>
+          </div>
         </div>
-      </section>
-  </main>
-  <footer class="bg-background-charcoal">
-    <div class="container mx-auto px-6 py-3">
-      <div class="flex justify-between items-center">
-        <p class="text-xl text-white">FlipBid</p>
-        <p class="py-2 text-white">All rights reserved</p>
-      </div>
+      </footer>
     </div>
-  </footer>
-    </section>
+  </body>
+</html>
