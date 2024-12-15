@@ -1,5 +1,18 @@
+/** Default placeholder image URL for listings without media */
 const DEFAULT_IMAGE = 'https://placehold.co/320x200';
 
+/**
+ * Creates an HTML string for a listing card component
+ * @param {Object} listing - The listing data object
+ * @param {string} listing.id - The unique identifier for the listing
+ * @param {string} listing.title - The title of the listing
+ * @param {string} listing.description - The description of the listing
+ * @param {Array} listing.media - Array of media objects for the listing
+ * @param {string} listing.endsAt - The end date/time of the listing
+ * @param {Object} listing._count - Object containing count data
+ * @param {number} listing._count.bids - Number of bids on the listing
+ * @returns {string} HTML string for the listing card
+ */
 export function createListingCard(listing) {
   const endDate = new Date(listing.endsAt).toLocaleDateString();
   const imageUrl = listing.media?.[0]?.url || DEFAULT_IMAGE;
@@ -19,17 +32,28 @@ export function createListingCard(listing) {
   `;
 }
 
+/**
+ * Creates pagination controls HTML
+ * @param {Object} meta - Pagination metadata
+ * @param {number} meta.currentPage - Current page number
+ * @param {number} meta.pageCount - Total number of pages
+ * @param {number|null} meta.previousPage - Previous page number or null if none
+ * @param {number|null} meta.nextPage - Next page number or null if none
+ * @returns {string} HTML string for pagination controls
+ */
 export function createPagination(meta) {
   return `
     <div class="flex justify-center gap-4 mt-8">
-      ${meta.previousPage
-        ? `<button class="bg-charcoal hover:bg-ecru text-white font-semibold rounded px-5 py-2 pagination-btn" data-page="${meta.previousPage}">Previous</button>`
-        : ''
+      ${
+        meta.previousPage
+          ? `<button class="bg-charcoal hover:bg-ecru text-white font-semibold rounded px-5 py-2 pagination-btn" data-page="${meta.previousPage}">Previous</button>`
+          : ''
       }
       <span class="flex items-center font-medium">Page ${meta.currentPage} of ${meta.pageCount}</span>
-      ${meta.nextPage
-        ? `<button class="bg-charcoal hover:bg-ecru text-white font-semibold rounded px-5 py-2 pagination-btn" data-page="${meta.nextPage}">Next</button>`
-        : ''
+      ${
+        meta.nextPage
+          ? `<button class="bg-charcoal hover:bg-ecru text-white font-semibold rounded px-5 py-2 pagination-btn" data-page="${meta.nextPage}">Next</button>`
+          : ''
       }
     </div>
   `;

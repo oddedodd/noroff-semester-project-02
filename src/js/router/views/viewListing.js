@@ -1,6 +1,18 @@
 import { API_BASE } from '../../api/constants';
 import { headers } from '../../api/headers.js';
 
+/**
+ * Handles displaying a single auction listing with all its details and bid functionality
+ * @async
+ * @function viewListing
+ * @returns {Promise<void>} Promise that resolves when the listing is displayed
+ * @description Fetches and displays a single auction listing including:
+ * - Listing details (title, description, seller)
+ * - Current highest bid and bid history
+ * - Image carousel for any images associated with the listing
+ * - Tags
+ * - Form for placing a bid
+ */
 export default async function viewListing() {
   const urlParams = new URLSearchParams(window.location.search);
   const listingId = urlParams.get('id');
@@ -119,11 +131,10 @@ export default async function viewListing() {
   // Update bid history
   const bidsContainer = document.querySelector('#bids-container');
   bidsContainer.innerHTML = '';
-  
+
   if (listing.bids?.length) {
     listing.bids.sort((a, b) => new Date(b.created) - new Date(a.created));
-    listing.bids.forEach(bid => {
-        console.log(bid);
+    listing.bids.forEach((bid) => {
       bidsContainer.innerHTML += `
       <div class="flex justify-between items-center py-2">
         <div class="font-medium flex items-center gap-2"><img src="${bid.bidder.avatar ? bid.bidder.avatar.url : 'https://via.placeholder.com/32'}" alt="${bid.bidder.name}'s avatar" class="w-8 h-8 rounded-full object-cover">${bid.bidder.name}</div>
@@ -161,7 +172,12 @@ export default async function viewListing() {
   });
 }
 
-// Helper function to format time ago
+/**
+ * Formats a date into a human-readable "time ago" string
+ * @param {Date} date - The date to format
+ * @returns {string} A human-readable string representing how long ago the date was
+ * @description Converts a date into a relative time string like "2 hours ago" or "3 days ago"
+ */
 function getTimeAgo(date) {
   const seconds = Math.floor((new Date() - date) / 1000);
 

@@ -1,5 +1,10 @@
 import { login } from '../../api/auth/login.js';
 
+/**
+ * Displays an error message on the login form
+ * @param {string} message - The error message to display
+ * @description Removes any existing error message and creates a new one with the provided message
+ */
 function showError(message) {
   // Remove any existing error message first
   const existingError = document.querySelector('#login-error');
@@ -18,6 +23,11 @@ function showError(message) {
   submitButton.insertAdjacentElement('afterend', errorDiv);
 }
 
+/**
+ * Handles the login form submission
+ * @description Prevents default form submission, removes any existing error messages,
+ * extracts form data and attempts to log in the user. Shows error message if login fails.
+ */
 document.addEventListener('submit', async (event) => {
   event.preventDefault();
 
